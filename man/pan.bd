@@ -1,0 +1,56 @@
+.BG
+.FN pan.bd
+.TL
+Imputation of multivariate panel or cluster data
+.DN
+Implementation of pan() that restricts the covariance matrix
+for the random effects to be block-diagonal. This function
+is identical to pan() in every way except that psi is now 
+characterized by a set of r matrices of dimension q x q.
+	
+.CS
+pan.bd(y, subj, pred, xcol, zcol, prior, seed, iter=1, start)
+
+.RA
+
+.AG y
+See description for pan().
+
+.AG subj
+See description for pan().
+
+.AG pred
+See description for pan().
+
+.AG xcol
+See description for pan().
+
+.AG zcol
+See description for pan().
+
+.AG prior
+Same as for pan() except that the hyperparameters for psi
+have new dimensions. The hyperparameter c is now a vector of
+length r, where c[j] contains the prior degrees of freedom for
+the jth block portion of psi (j=1,...,r). The hyperparameter
+Dinv is now an array of dimension c(q,q,r), where Dinv[,,j]
+contains the prior scale matrix for the jth block portion of
+psi (j=1,...,r).
+
+.AG seed
+See description for pan().
+
+.OA
+
+.AG iter
+See description for pan().
+
+.AG start
+See description for pan().
+
+.RT
+A list with the same components as that from pan(), with two
+minor differences: the dimension of "psi" is now (q x q x r x
+"iter"), and the dimension of "last$psi" is now (q x q x r).
+.WR
+
