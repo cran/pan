@@ -110,7 +110,7 @@ pan.bd <- function(y,subj,pred,xcol,zcol,prior,seed,iter=1,start){
 	y[is.na(y)] <- -999.99
 	storage.mode(pred) <- "double"
 	#
-	.Fortran("rngs",as.integer(seed))
+	.Fortran("rngs",as.integer(seed),PACKAGE="pan")
 	#
 	tmp <- .Fortran("mgibbsbd",ntot,as.integer(subj),m,ist=integer(m),
 		ifin=integer(m),pcol,pred,
@@ -127,7 +127,7 @@ pan.bd <- function(y,subj,pred,xcol,zcol,prior,seed,iter=1,start){
 		iposn=iposn,pstfin=pstfin,
 		betas=array(0,c(p,r,iter)),sigmas=array(0,c(r,r,iter)),
 		psis=array(0,c(q,q,r,iter)),
-		wkqq1=matrix(0,q,q),wkqq2=matrix(0,q,q))
+		wkqq1=matrix(0,q,q),wkqq2=matrix(0,q,q),PACKAGE="pan")
 	# restore y to being a vector if necessary
 	if(r==1) tmp$y <- as.vector(tmp$y)
 	#
@@ -238,7 +238,7 @@ pan <- function(y,subj,pred,xcol,zcol,prior,seed,iter=1,start){
 	y[is.na(y)] <- -999.99
 	storage.mode(pred) <- "double"
 	#
-	.Fortran("rngs",as.integer(seed))
+	.Fortran("rngs",as.integer(seed),PACKAGE="pan")
 	#
 	tmp <- .Fortran("mgibbs",ntot,as.integer(subj),m,ist=integer(m),
 		ifin=integer(m),pcol,pred,
@@ -254,7 +254,7 @@ pan <- function(y,subj,pred,xcol,zcol,prior,seed,iter=1,start){
 		wkqrv=numeric(q*r),nhyp,hyp,delta=matrix(0,ntot,r),
 		iposn=iposn,pstfin=pstfin,
 		betas=array(0,c(p,r,iter)),sigmas=array(0,c(r,r,iter)),
-		psis=array(0,c(r*q,r*q,iter)))
+		psis=array(0,c(r*q,r*q,iter)),PACKAGE="pan")
 	# restore y to being a vector if necessary
 	if(r==1) tmp$y <- as.vector(tmp$y)
 	#
@@ -286,7 +286,7 @@ ecme <- function(y,subj,occ,pred,xcol,zcol=NULL,vmax,start,maxits=1000,
 		vh=array(0,c(nmax,nmax,m)),vi=array(0,c(nmax,nmax,m)),pcol,
 		as.double(pred),q,
 		integer(1),ztv=array(0,c(q,nmax,m)),
-		sig=array(0,c(q,q,m)),iflag)
+		sig=array(0,c(q,q,m)),iflag,PACKAGE="pan")
 		ist <- tmp$ist
 		ifin <- tmp$ifin
 		vh <- tmp$vh
@@ -304,7 +304,7 @@ ecme <- function(y,subj,occ,pred,xcol,zcol=NULL,vmax,start,maxits=1000,
 		wk=array(0,c(q,nmax,m)),w=array(0,c(nmax,nmax,m)),
 		xtw=matrix(0,p,nmax),
 	        xtwx=matrix(0,p,p),xtwy=numeric(p),xtwxinv=matrix(0,p,p),
-		ll=numeric(1))
+		ll=numeric(1),PACKAGE="pan")
 	beta <- tmp$beta
 	sigma2 <- tmp$sigma2
 	#llvec <- tmp$ll  I'm not sure that this loglikelihood is right,
@@ -353,7 +353,7 @@ ecme <- function(y,subj,occ,pred,xcol,zcol=NULL,vmax,start,maxits=1000,
 		sflag=sflag,eps=as.double(eps),
 		obeta=rep(0,p),opsi=matrix(0,q,q),
 		maxits=as.integer(maxits),
-		iter=integer(1),cvgd=integer(1))
+		iter=integer(1),cvgd=integer(1),PACKAGE="pan")
 	cat("\n")
 	iter <- tmp$iter
         llvec <- tmp$llvec[1:iter]
@@ -363,7 +363,7 @@ ecme <- function(y,subj,occ,pred,xcol,zcol=NULL,vmax,start,maxits=1000,
 	{if(random.effects){
 		bhat <- tmp$b
 		cov.b <- tmp$sig
-		cov.b <- .Fortran("bdiag",q,m,cov.b=cov.b)$cov.b}
+		cov.b <- .Fortran("bdiag",q,m,cov.b=cov.b,PACKAGE="pan")$cov.b}
 	else{
 		bhat <- NULL
 		cov.b <- NULL}}
