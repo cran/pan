@@ -31,11 +31,11 @@ ei    = (ni x 1) vector of residual errors.
 The vector bi is assumed to be normally distributed
 with mean zero and unstructured covariance matrix psi, 
 
-bi \eqn{\sim}  N(0,psi) independently for i=1,\dots,m.
+bi \eqn{\sim}{~}  N(0,psi) independently for i=1,\dots,m.
 
 The residual vector ei is assumed to be
 
-ei \eqn{\sim} N(0,sigma2*Vi)
+ei \eqn{\sim}{~} N(0,sigma2*Vi)
 
 where Vi is a known (ni x ni) matrix. In most applications,
 Vi is the identity matrix.

@@ -1,6 +1,6 @@
 Package: pan
-Version: 0.1
-Date: 2003-11-5
+Version: 0.2
+Date: 2003-12-20
 Title:  Multiple imputation for multivariate panel or clustered data
 Author: Original by Joseph L. Schafer <jls@stat.psu.edu>. 
 Maintainer: Jing hua Zhao <j.zhao@public-health.ucl.ac.uk>
