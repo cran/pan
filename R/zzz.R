@@ -1,1 +1,1 @@
-.First.lib <- function(lib, pkg) library.dynam("pan", pkg, lib)
+# .First.lib <- function(lib, pkg) library.dynam("pan", pkg, lib)
