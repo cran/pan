@@ -1,6 +1,6 @@
 Package: pan
-Version: 0.2-2
-Date: 2004-4-1
+Version: 0.2-3
+Date: 2005-3-23
 Title:  Multiple imputation for multivariate panel or clustered data
 Author: Original by Joseph L. Schafer <jls@stat.psu.edu>. 
 Maintainer: Jing hua Zhao <j.zhao@ucl.ac.uk>
@@ -10,4 +10,4 @@ License: The software may be distributed free of charge and
 	fairly well, but it comes with no guarantees and the 
 	authors assume no liability for its use or misuse. 
 URL: http://www.stat.psu.edu/~jls/misoftwa.html
-Packaged: Fri Dec 10 19:17:44 2004; hornik
+Packaged: Sat Apr  2 09:15:38 2005; jzhao

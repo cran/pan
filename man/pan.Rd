@@ -86,7 +86,7 @@ a list with four components (whose names are a, Binv, c, and
 Dinv, respectively) specifying the hyperparameters of the 
 prior distributions for psi and sigma. For information on how
 to specify and interpret these hyperparameters, see Schafer
-(1997) and the example command file "panex.s" distibuted with
+(1997) and the example command file "panex.R" distibuted with
 this package. Note: This is a slight departure from the
 notation in Schafer (1997), where a and Binv were denoted
 by "nu1" and "Lambdainv1", and c and Dinv were "nu2" and
