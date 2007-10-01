@@ -1,7 +1,6 @@
-pan                     a function for multiple imputation of missing
-                        covariates under a multivariate linear mixed model
-pan.bd                  an alternative version of pan that restricts the
-                        covariance matrix for the random effects (psi) to have
-                        a block-diagonal form
-ecme                    a function for maximum-likelihood estimation
-                        under a univariate linear mixed model
+ecme                    ECME algorithm for general linear mixed model,
+                        as described by Schafer (1997)
+pan                     Imputation of multivariate panel or cluster
+                        data
+pan.bd                  Imputation of multivariate panel or cluster
+                        data

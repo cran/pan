@@ -30,7 +30,7 @@
 #   -----------------------------------------------------------------
 #
 library(pan)
-library(ts)
+library(stats)
 ########################################################################
 # Below we show how to multiply impute the missing values using pan(). 
 # This example is somewhat atypical because the data consist of a
