@@ -215,7 +215,7 @@ C get starting values of parameters
          call mkbeta(p,r,xtxinv,wkpr,beta)
          call mkeps1(ntot,r,y,pcol,pred,p,xcol,beta,eps,patt)
          call mksigma(ntot,r,eps,nstar,sigma,patt)
-         call mksigbd(r,q,m,psi,sigma,ztz,sig,wkrr1,wkrr2,wkrqrq1,
+         call mksigbd(r,q,m,psi,sigma,ztz,sig,wkrr1,wkrr2,
      /     wkrqrq2,1,nhyp,hyp,wkqq1,wkqq2)
          call mkpsi0bd(r,q,m,psi,sig,wkrqrq1)
       else
@@ -228,11 +228,11 @@ C set starting value of y to eps
       endif
       do 100 it=1,iter
          call mkeps1(ntot,r,y,pcol,pred,p,xcol,beta,eps,patt)
-         call mksigbd(r,q,m,psi,sigma,ztz,sig,wkrr1,wkrr2,wkrqrq1,
+         call mksigbd(r,q,m,psi,sigma,ztz,sig,wkrr1,wkrr2,
      /     wkrqrq2,0,nhyp,hyp,wkqq1,wkqq2)
          call drb(r,q,m,b,wkrr2,eps,pcol,pred,zcol,wkqr1,
-     /     wkqr2,ist,ifin,patt,ntot,sig,wkrqrq1,wkrqrq2,wkqrv)
-         call drpsibd(r,q,m,psi,sig,wkqq1,wkqq2,wkqrv,nhyp,hyp,b)
+     /     wkqr2,ist,ifin,patt,ntot,sig,wkrqrq2,wkqrv)
+         call drpsibd(r,q,m,psi,wkqq1,wkqq2,wkqrv,nhyp,hyp,b)
          call mkeps2(ntot,m,r,y,pcol,pred,q,zcol,b,eps,patt,ist,ifin)
          call mkxty(ntot,r,eps,pcol,pred,p,xcol,patt,wkpr)
          call mkbeta(p,r,xtxinv,wkpr,beta)
@@ -242,7 +242,7 @@ C set starting value of y to eps
          call drbeta(r,sigma,xtxinv,p,beta,wkrr1,wkpp,wkpr)
          call mkeps1(ntot,r,eps,pcol,pred,p,xcol,beta,delta,patt)
          call dreps(100,100,oc,mc,100,wkr,ntot,iposn,npatt,pstfin,
-     /     r,rmat,patt,delta,sigma,wkrr1,wkrr2)
+     /     r,rmat,delta,sigma,wkrr1,wkrr2)
          call mky(ntot,r,pcol,pred,delta,y,p,xcol,q,zcol,beta,m,b,
      /     ist,ifin,npatt,rmat,patt)
          call storebd(iter,it,p,r,beta,q,psi,sigma,betas,sigmas,psis)
@@ -295,8 +295,8 @@ C set starting value of y to eps
          call mksig(r,q,m,psi,sigma,ztz,sig,wkrr1,wkrr2,wkrqrq1,
      /     wkrqrq2,0,nhyp,hyp)
          call drb(r,q,m,b,wkrr2,eps,pcol,pred,zcol,wkqr1,
-     /     wkqr2,ist,ifin,patt,ntot,sig,wkrqrq1,wkrqrq2,wkqrv)
-         call drpsi(r,q,m,psi,sig,wkrqrq1,wkrqrq2,wkqrv,nhyp,hyp,b)
+     /     wkqr2,ist,ifin,patt,ntot,sig,wkrqrq2,wkqrv)
+         call drpsi(r,q,m,psi,wkrqrq1,wkrqrq2,wkqrv,nhyp,hyp,b)
          call mkeps2(ntot,m,r,y,pcol,pred,q,zcol,b,eps,patt,ist,ifin)
          call mkxty(ntot,r,eps,pcol,pred,p,xcol,patt,wkpr)
          call mkbeta(p,r,xtxinv,wkpr,beta)
@@ -306,7 +306,7 @@ C set starting value of y to eps
          call drbeta(r,sigma,xtxinv,p,beta,wkrr1,wkpp,wkpr)
          call mkeps1(ntot,r,eps,pcol,pred,p,xcol,beta,delta,patt)
          call dreps(100,100,oc,mc,100,wkr,ntot,iposn,npatt,pstfin,
-     /     r,rmat,patt,delta,sigma,wkrr1,wkrr2)
+     /     r,rmat,delta,sigma,wkrr1,wkrr2)
          call mky(ntot,r,pcol,pred,delta,y,p,xcol,q,zcol,beta,m,b,
      /     ist,ifin,npatt,rmat,patt)
          call store(iter,it,p,r,beta,q,psi,sigma,betas,sigmas,psis)
@@ -402,7 +402,7 @@ C calculates y = delta + X%*%beta  + Z%*%b for missing observations
       end
 C***********************************************************************
       subroutine dreps(loc,lmc,oc,mc,lwkr,wkr,ntot,iposn,npatt,pstfin,
-     /     r,rmat,patt,delta,sigma,wkrr1,wkrr2)
+     /     r,rmat,delta,sigma,wkrr1,wkrr2)
 C draws residuals given parameters and random effects
       integer loc,lmc,oc(loc),mc(lmc),lwkr,nmc,noc,ntot,iposn(ntot),
      /     npatt,pstfin(npatt,2),r,rmat(npatt,r),patt(ntot),pt
@@ -698,7 +698,7 @@ C calculates eps = y - Z%*% b
       return
       end
 C***********************************************************************
-      subroutine drpsibd(r,q,m,psi,sig,wkqq1,wkqq2,wkqrv,nhyp,hyp,b)
+      subroutine drpsibd(r,q,m,psi,wkqq1,wkqq2,wkqrv,nhyp,hyp,b)
 C Version of drpsi for block-diagonal pan
       integer r,q,m,s,nhyp
       double precision psi(q,q,r),sig(r*q,r*q,m),wkqq1(q,q),
@@ -757,7 +757,7 @@ C draw inverse Wishart
       return
       end
 C***********************************************************************
-      subroutine drpsi(r,q,m,psi,sig,wkrqrq1,wkrqrq2,wkqrv,nhyp,hyp,b)
+      subroutine drpsi(r,q,m,psi,wkrqrq1,wkrqrq2,wkqrv,nhyp,hyp,b)
 C draws new value of psi
       integer r,q,m,s,nhyp
       double precision psi(r*q,r*q),sig(r*q,r*q,m),wkrqrq1(r*q,r*q),
@@ -813,7 +813,7 @@ C draw inverse Wishart
       end
 C***********************************************************************
       subroutine drb(r,q,m,b,sigmainv,eps,pcol,pred,zcol,wkqr1,
-     /     wkqr2,ist,ifin,patt,ntot,sig,wkrqrq1,wkrqrq2,wkqrv)
+     /     wkqr2,ist,ifin,patt,ntot,sig,wkrqrq2,wkqrv)
 C draws b_i, i=1,...,m. 
       integer r,q,m,s,pcol,zcol(q),ist(m),ifin(m),st,fin,patt(ntot),
      /     ntot
@@ -943,7 +943,7 @@ C calculates initial estimate of psi given sig.
       return
       end
 C***********************************************************************
-      subroutine mksigbd(r,q,m,psi,sigma,ztz,sig,wkrr1,wkrr2,wkrqrq1,
+      subroutine mksigbd(r,q,m,psi,sigma,ztz,sig,wkrr1,wkrr2,
      /     wkrqrq2,zflag,nhyp,hyp,wkqq1,wkqq2)
 C Version of mksig for the block-diagonal pan.
 C calculates the square root of
@@ -1248,7 +1248,7 @@ C           q=(y/exp(y-1))**(a-1)
            b=(e+a)/e
            p=b*u
            if(p.gt.1) goto 4
-3          continue
+           continue
            x=p**(1/a)
            u1=rangen(0)
            if(u1.gt.(e**(-x)))then
@@ -1352,8 +1352,8 @@ C Get default starting values for ECME
      /     wk(q,nmax,m),vh(nmax,nmax,m),wkq3(q,q),w(nmax,nmax,m),
      /     xtw(p,nmax),xtwx(p,p),xtwy(p),xtwxinv(p,p)
       call gls(ntot,m,ist,ifin,occ,nmax,vi,vh,pcol,
-     /     pred,q,zcol,ztv,sig0,iflag,sig,psi,sigma2,p,xcol,beta,wkq1,
-     /     wkq2,wkq3,y,delta,b,wk,w,xtw,xtwx,xtwy,xtwxinv)
+     /     pred,q,iflag,sig,sigma2,p,xcol,beta,
+     /     y,delta,w,xtw,xtwx,xtwy,xtwxinv)
 C get psi
       do 310 i=1,q
          do 305 j=i,q
@@ -1394,8 +1394,8 @@ C loglikelihood
      /     wk(q,nmax,m),vh(nmax,nmax,m),wkq3(q,q),w(nmax,nmax,m),
      /     xtw(p,nmax),xtwx(p,p),xtwy(p),xtwxinv(p,p),ll
       call gls(ntot,m,ist,ifin,occ,nmax,vi,vh,pcol,
-     /     pred,q,zcol,ztv,sig0,iflag,sig,psi,sigma2,p,xcol,beta,wkq1,
-     /     wkq2,wkq3,y,delta,b,wk,w,xtw,xtwx,xtwy,xtwxinv)
+     /     pred,q,iflag,sig,sigma2,p,xcol,beta,
+     /     y,delta,w,xtw,xtwx,xtwy,xtwxinv)
       call mkll2(nmax,m,w,ntot,delta,occ,ist,ifin,ll)
       return
       end
@@ -1427,8 +1427,8 @@ C evaluates loglikelihood
       end
 C***********************************************************************
       subroutine gls(ntot,m,ist,ifin,occ,nmax,vi,vh,pcol,
-     /     pred,q,zcol,ztv,sig0,iflag,sig,psi,sigma2,p,xcol,beta,wkq1,
-     /     wkq2,wkq3,y,delta,b,wk,w,xtw,xtwx,xtwy,xtwxinv)
+     /     pred,q,iflag,sig,sigma2,p,xcol,beta,
+     /     y,delta,w,xtw,xtwx,xtwy,xtwxinv)
 C gets GLS estimates for beta and sigma2, assuming psi=0
       integer ntot,m,ist(m),ifin(m),occ(ntot),nmax,pcol,
      /     q,zcol(q),iflag,p,xcol(p),st,fin,s
@@ -1462,7 +1462,7 @@ C initialize W_i to inv(V_i) and  get beta
  12      continue
          call mkxtw(ntot,pcol,pred,p,xcol,occ,st,fin,nmax,w,xtw,s,m)
          call mkxtwx(ntot,pcol,pred,p,xcol,occ,st,fin,nmax,xtw,xtwx)
-         call mkxtwy(ntot,p,xcol,occ,st,fin,nmax,xtw,y,xtwy)
+         call mkxtwy(ntot,p,occ,st,fin,nmax,xtw,y,xtwy)
  100  continue
       call chfc(p,p,xtwx)
       call bkslv(p,p,xtwx)
@@ -1569,7 +1569,7 @@ C set sflag=1 if starting values supplied
          call mkbeta3(q,nmax,m,wk,ztv,vi,w,ntot,occ,ist,ifin,
      /        pcol,pred,p,xcol,y,xtw,xtwx,xtwy,xtwxinv,beta,iflag)
          call mkdel(ntot,pcol,pred,p,xcol,y,beta,delta)
-         call mksig23(ntot,delta,m,sigma2,nmax,vh,occ,ist,ifin,w)
+         call mksig23(ntot,delta,m,sigma2,nmax,occ,ist,ifin,w)
          ll=-dble(.5)*dfloat(ntot)*dlog(sigma2)+dfloat(m)*ldxi+ldsig
          ll=ll-dble(.5)*dfloat(ntot)
          llk(iter)=ll
@@ -1672,7 +1672,7 @@ C for ECME-3
          call mkw3(q,nmax,m,wk,ztv,vi,s,w,ntot,occ,st,fin,iflag)
          call mkxtw(ntot,pcol,pred,p,xcol,occ,st,fin,nmax,w,xtw,s,m)
          call mkxtwx(ntot,pcol,pred,p,xcol,occ,st,fin,nmax,xtw,xtwx)
-         call mkxtwy(ntot,p,xcol,occ,st,fin,nmax,xtw,y,xtwy)
+         call mkxtwy(ntot,p,occ,st,fin,nmax,xtw,y,xtwy)
  100  continue
       call chfc(p,p,xtwx)
       call bkslv(p,p,xtwx)
@@ -1690,7 +1690,7 @@ C for ECME-3
       return
       end
 C***********************************************************************
-      subroutine mkxtwy(ntot,p,xcol,occ,st,fin,nmax,xtw,y,xtwy)
+      subroutine mkxtwy(ntot,p,occ,st,fin,nmax,xtw,y,xtwy)
 C increments xtwy for subject s
       integer ntot,p,xcol(p),occ(ntot),st,fin,nmax
       double precision xtw(p,nmax),y(ntot),xtwy(p),sum
@@ -1939,7 +1939,7 @@ C multiply ztv by its transpose, store result (upper-tri part) in sig0
       return
       end
 C***********************************************************************
-      subroutine mksig23(ntot,delta,m,sigma2,nmax,vh,occ,ist,ifin,w)
+      subroutine mksig23(ntot,delta,m,sigma2,nmax,occ,ist,ifin,w)
 C for ECME-3
       integer ntot,m,s,nmax,occ(ntot),ist(m),ifin(m),st,fin
       double precision delta(ntot),sigma2,sum,vh(nmax,nmax,m),
