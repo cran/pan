@@ -359,7 +359,7 @@ ecme <- function(y,subj,occ,pred,xcol,zcol=NULL,vmax,start,maxits=1000,
         llvec <- tmp$llvec[1:iter]
 	converged <- tmp$cvgd==as.integer(1)
 	cov.beta <- tmp$xtwxinv*tmp$sigma2
-	cov.beta <- cov.beta+t(cov.beta)-diag(diag(cov.beta))
+	cov.beta <- cov.beta+t(cov.beta)-diag(cov.beta)
 	{if(random.effects){
 		bhat <- tmp$b
 		cov.b <- tmp$sig
