@@ -1,8 +1,7 @@
 \name{ecme}
 \alias{ecme}
 \title{
-ECME algorithm for general linear mixed model, as
-described by Schafer (1997)
+ECME algorithm for general linear mixed model
 }
 \description{
 Performs maximum-likelihood estimation for generalized linear
@@ -196,8 +195,13 @@ estimate of the covariance matrix associated with bi.
 
 \references{
 Schafer, J.L. (1997) Imputation of missing covariates under
-a multivariate linear mixed model. Technical report, Dept. of
-Statistics, The Pennsylvania State University.
+a multivariate linear mixed model. Technical report 97-04, Dept. of
+Statistics, The Pennsylvania State University, 
+\url{http://www.stat.psu.edu/reports/1997/tr9704.pdf}.
+
+Schafer J L, Yucel RM (2002). Computational strategies for 
+multivariate linear mixed-effects models with missing values. 
+Journal of Computational and Graphical Statistics. 11:437-457
 }
 
 \examples{

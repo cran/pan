@@ -1,5 +1,4 @@
-ecme                    ECME algorithm for general linear mixed model,
-                        as described by Schafer (1997)
+ecme                    ECME algorithm for general linear mixed model
 pan                     Imputation of multivariate panel or cluster
                         data
 pan.bd                  Imputation of multivariate panel or cluster
