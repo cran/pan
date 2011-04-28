@@ -177,8 +177,13 @@ stacking yi, i=1,\dots,m then this will automatically be the case.
 
 \references{
 Schafer, J.L. (1997) Imputation of missing covariates under
-a multivariate linear mixed model. Technical report, Dept. of
-Statistics, The Pennsylvania State University.
+a multivariate linear mixed model. Technical report 97-04, Dept. of
+Statistics, The Pennsylvania State University, 
+\url{http://www.stat.psu.edu/reports/1997/tr9704.pdf}.
+
+Schafer J L, Yucel RM (2002). Computational strategies for 
+multivariate linear mixed-effects models with missing values. 
+Journal of Computational and Graphical Statistics. 11:437-457
 }
 
 \examples{
