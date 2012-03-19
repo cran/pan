@@ -1,0 +1,12 @@
+Version 0.4
+
+2012-03-16	Add this file, .Rinstignore, and pan-tr.Rnw
+		Add pointers to ecmeex.R and panex.R in the documentation
+
+Version 0.3
+
+2011-04-28	Add references
+
+Version 0.1
+
+2003-11-15	Made available from CRAN
