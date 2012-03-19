@@ -1,0 +1,16 @@
+eebea092c82c0c84a30b6d32d9714ac3 *ChangeLog
+ce43c2a0bbaae43fdad111318c8b0bf7 *DESCRIPTION
+c19ca07d4c1e7fb9b35e877447420076 *INDEX
+bf230087942b366995f519c83c144530 *LICENSE
+809512848c2962af1dbe632279583f42 *NAMESPACE
+1846828c44ec5f40fd5479c1bfb20fbc *R/pan.R
+4c7869117723e078b8980bd7013dc345 *R/zzz.R
+c34016f48b37fd5d3ffd7e81566ac0d1 *inst/doc/pan-tr.Rnw
+dda69a11b3b1f26684601d695151ac1c *inst/doc/pan-tr.pdf
+d8ecfee0d3df12d91d65508a5fa02539 *inst/doc/tr9704.pdf
+878833766561fc3a6d28fe59af218830 *inst/tests/ecmeex.R
+cf902a30a127d363fd2725899d6dc924 *inst/tests/panex.R
+29b9d146934cf40dd6d1f210da83b364 *man/ecme.Rd
+f77f46a34976bc120bbceb939e2f559b *man/pan.Rd
+6cc846b91c04cb94d419ea89aea673ed *man/pan.bd.Rd
+081a42bd14938c8a6d88497481cfef94 *src/pan.f

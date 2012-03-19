@@ -208,6 +208,11 @@ Journal of Computational and Graphical Statistics. 11:437-457
 \dontrun{
 For a detailed example, see the file "ecmeex.R" distributed
 with this function.
+
+options(verbose=TRUE)
+filespec <- file.path(.path.package("pan"),"tests","ecmeex.R")
+source(filespec)
+
 }}
 
 \keyword{models}

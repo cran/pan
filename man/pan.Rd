@@ -188,9 +188,13 @@ Journal of Computational and Graphical Statistics. 11:437-457
 
 \examples{
 \dontrun{
-For a detailed example, see the file "panex.R" distributed
-with this function. Here is a simple example of how pan()
-might be used to produce three imputations.
+For a detailed example, see the file "panex.R" distributed with this function. 
+
+options(verbose=TRUE)
+filespec <- file.path(.path.package("pan"),"tests","panex.R")
+source(filespec)
+
+Here is a simple example of how pan() might be used to produce three imputations.
 
 # run Gibbs for 1000 cycles
 result <- pan(y,subj,pred,xcol,zcol,prior,seed=9565,iter=1000)           
