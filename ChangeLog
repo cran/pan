@@ -1,3 +1,11 @@
+Version 0.5
+
+2012-8-6	Correct minor topos according to Speidel Matthias <Matthias.Speidel@iab.de>
+		Add CITATION
+2012-4-6	Add marijuana data from pannex
+		Remove inst/tests and remove dontrun{} in ecme.Rd and pan.Rd
+		To enable LazyData and LazyLoad
+
 Version 0.4
 
 2012-03-16	Add this file, .Rinstignore, and pan-tr.Rnw
