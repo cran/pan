@@ -187,28 +187,110 @@ Journal of Computational and Graphical Statistics. 11:437-457
 }
 
 \examples{
-\dontrun{
-For a detailed example, see the file "panex.R" distributed with this function. 
-
-options(verbose=TRUE)
-filespec <- file.path(.path.package("pan"),"tests","panex.R")
-source(filespec)
-
-Here is a simple example of how pan() might be used to produce three imputations.
-
-# run Gibbs for 1000 cycles
-result <- pan(y,subj,pred,xcol,zcol,prior,seed=9565,iter=1000)           
-# first imputation
-imp1 <- result$y
-# another 1000 cycles
-result <- pan(y,subj,pred,xcol,zcol,prior,seed=54324,iter=1000,start=result$last)
-# second imputation
-imp2 <- result$y
-# another 1000 cycles
-result <- pan(y,subj,pred,xcol,zcol,prior,seed=698212,iter=1000,start=result$last)
-# third imputation
-imp3 <- result$y
-}}
+########################################################################
+# This example is somewhat atypical because the data consist of a
+# single response variable (change in heart rate) measured repeatedly;
+# most uses of pan() will involve r > 1 response variables. If we had
+# r response variables rather than one, the only difference would be
+# that the vector y below would become a matrix with r columns, one
+# for each response variable. The dimensions of Sigma (the residual
+# covariance matrix for the response) and Psi (the covariance matrix
+# for the random effects) would also change to (r x r) and (r*q x r*q),
+# respectively, where q is the number of random coefficients in the
+# model (in this case q=1 because we have only random intercepts). The
+# new dimensions for Sigma and Psi will be reflected in the prior
+# distribution, as Dinv and Binv become (r x r) and (r*q x r*q).  
+#
+# The pred matrix has the same number of rows as y, the number of
+# subject-occasions. Each column of Xi and Zi must be represented in
+# pred. Because Zi is merely the first column of Xi, we do not need to
+# enter that column twice. So pred is simply the matrix Xi, stacked
+# upon itself nine times.
+#
+data(marijuana)
+attach(marijuana)
+pred <- with(marijuana,cbind(int,dummy1,dummy2,dummy3,dummy4,dummy5))
+#
+# Now we must tell pan that all six columns of pred are to be used in
+# Xi, but only the first column of pred appears in Zi.
+#
+xcol <- 1:6
+zcol <- 1
+########################################################################
+# The model specification is now complete. The only task that remains
+# is to specify the prior distributions for the covariance matrices
+# Sigma and Psi.
+#
+# Recall that the dimension of Sigma is (r x r) where r
+# is the number of response variables (in this case, r=1). The prior
+# distribution for Sigma is inverted Wishart with hyperparameters a 
+# (scalar) and Binv (r x r), where a is the imaginary degrees of freedom
+# and Binv/a is the prior guesstimate of Sigma. The value of a must be
+# greater than or equal to r. The "least informative" prior possible
+# would have a=r, so here we will take a=1. As a prior guesstimate of 
+# Sigma we will use the (r x r) identity matrix, so Binv = 1*1 = 1.
+#
+# By similar reasoning we choose the prior distribution for Psi. The
+# dimension of Psi is (r*q x r*q) where q is the number of random
+# effects in the model (i.e. the length of zcol, which in this case is
+# one). The hyperparameters for Psi are c and Dinv, where c is the
+# imaginary degrees of freedom (which must be greater than or equal to
+# r*q) and Dinv/c is the prior guesstimate of Psi. We will take c=1
+# and Dinv=1*1 = 1.
+#
+# The prior is specified as a list with four components named a, Binv,
+# c, and Dinv, respectively.
+#
+prior <- list(a=1,Binv=1,c=1,Dinv=1)
+########################################################################
+# Now we are ready to run pan(). Let's assume that the pan function
+# and the object code have already been loaded into Splus. First we
+# do a preliminary run of 1000 iterations. 
+#
+result <- pan(y,subj,pred,xcol,zcol,prior,seed=13579,iter=1000)
+#
+# Check the convergence behavior by making time-series plots and acfs
+# for the model parameters. Variances will be plotted on a log
+# scale. We'll assume that a graphics device has already been opened.
+#
+plot(1:1000,log(result$sigma[1,1,]),type="l")
+acf(log(result$sigma[1,1,]))
+plot(1:1000,log(result$psi[1,1,]),type="l")
+acf(log(result$psi[1,1,]))
+par(mfrow=c(3,2))
+for(i in 1:6) plot(1:1000,result$beta[i,1,],type="l")
+for(i in 1:6) acf(result$beta[i,1,])
+#
+# This example appears to converge very rapidly; the only appreciable
+# autocorrelations are found in Psi, and even those die down by lag
+# 10. With a sample this small we can afford to be cautious, so let's
+# impute the missing data m=10 times taking 100 steps between
+# imputations. We'll use the current simulated value of y as the first
+# imputation, then restart the chain where we left off to produce
+# the second thru the tenth.
+#
+y1 <- result$y
+result <- pan(y,subj,pred,xcol,zcol,prior,seed=9565,iter=100,start=result$last)
+y2 <- result$y
+result <- pan(y,subj,pred,xcol,zcol,prior,seed=6047,iter=100,start=result$last)
+y3 <- result$y
+result <- pan(y,subj,pred,xcol,zcol,prior,seed=3955,iter=100,start=result$last)
+y4 <- result$y
+result <- pan(y,subj,pred,xcol,zcol,prior,seed=4761,iter=100,start=result$last)
+y5 <- result$y
+result <- pan(y,subj,pred,xcol,zcol,prior,seed=9188,iter=100,start=result$last)
+y6 <- result$y
+result <- pan(y,subj,pred,xcol,zcol,prior,seed=9029,iter=100,start=result$last)
+y7 <- result$y
+result <- pan(y,subj,pred,xcol,zcol,prior,seed=4343,iter=100,start=result$last)
+y8 <- result$y
+result <- pan(y,subj,pred,xcol,zcol,prior,seed=2372,iter=100,start=result$last)
+y9 <- result$y
+result <- pan(y,subj,pred,xcol,zcol,prior,seed=7081,iter=100,start=result$last)
+y10 <- result$y
+detach(marijuana)
+########################################################################
+}
 
 \keyword{models}
 
