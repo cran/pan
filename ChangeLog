@@ -1,6 +1,12 @@
+Version 0.6
+
+2013-01-07	Add bivariate example from Maria Valaste <maria.valaste@helsinki.fi> 
+		following earlier communications with Turkiewicz, Aleksandra <at@rcsyd.se>
+2012-08-31	Remove reference to panex.R in pan.Rd
+
 Version 0.5
 
-2012-8-6	Correct minor topos according to Speidel Matthias <Matthias.Speidel@iab.de>
+2012-8-6	Correct minor typos according to Speidel Matthias <Matthias.Speidel@iab.de>
 		Add CITATION
 2012-4-6	Add marijuana data from pannex
 		Remove inst/tests and remove dontrun{} in ecme.Rd and pan.Rd
