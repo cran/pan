@@ -86,8 +86,7 @@ a list with four components (whose names are a, Binv, c, and
 Dinv, respectively) specifying the hyperparameters of the 
 prior distributions for psi and sigma. For information on how
 to specify and interpret these hyperparameters, see Schafer
-(1997) and the example command file "panex.R" distibuted with
-this package. Note: This is a slight departure from the
+(1997) and the example below. Note: This is a slight departure from the
 notation in Schafer (1997), where a and Binv were denoted
 by "nu1" and "Lambdainv1", and c and Dinv were "nu2" and
 "Lambdainv2".
@@ -290,6 +289,24 @@ result <- pan(y,subj,pred,xcol,zcol,prior,seed=7081,iter=100,start=result$last)
 y10 <- result$y
 detach(marijuana)
 ########################################################################
+
+### bivariate example
+
+data(bitest)
+attach(bitest)
+y <- with(bitest,cbind(y1,y2))
+
+subj <- c(clusterid)
+pred <- c (int, x1, x2, x3)
+xcol <- 1:4
+zcol <- 1
+a <- 2
+b <- 2
+id2 <- matrix(c(1,0,0,1),ncol=2,nrow=2)
+Binv <- 4*id2
+Dinv <- 4*id2
+prior <- list(a=a, Binv=Binv, c=a, Dinv=Dinv)
+result <- pan(y, subj, pred, xcol, zcol, prior, seed=12345, iter=1000)
 }
 
 \keyword{models}
