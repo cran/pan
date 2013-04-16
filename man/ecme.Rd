@@ -232,16 +232,22 @@ Journal of Computational and Graphical Statistics. 11:437-457
 #
 data(marijuana)
 # we only use the complete data to illustrate
-marijuana <- subset(marijuana,!is.na(y))
-attach(marijuana)
-pred <- with(marijuana,cbind(int,dummy1,dummy2,dummy3,dummy4,dummy5))
+complete <- subset(marijuana,!is.na(y))
+attach(complete)
+pred <- with(complete,cbind(int,dummy1,dummy2,dummy3,dummy4,dummy5))
 xcol <- 1:6
 zcol <- 1
-
 # Now we can fit the model.
 result <- ecme(y,subj,occ,pred,xcol,zcol)
 result
-detach(marijuana)
+
+# Now we compare to lmer
+require(lme4)
+result <- lmer(y~-1+pred+(1|subj))
+result
+vcov(result)
+detach(complete)
+
 ########################################################################
 }
 
