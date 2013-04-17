@@ -44,13 +44,14 @@ Subject: Help for using R package PAN
 
 Dear Jing hua Zhao,
 
-I'm trying to use R package PAN. For one Y variable I have managed succesfully to impute using package
-PAN. When I try to impute two Y variables, I have encountered a problem that I can't solve. Could please
-help me? I'm not expert on R program and I'm really desperate.
+I'm trying to use R package PAN. For one Y variable I have managed succesfully to 
+impute using package PAN. When I try to impute two Y variables, I have encountered a 
+problem that I can't solve. Could please help me? I'm not expert on R program and 
+I'm really desperate.
 
-I have R version 2.15.2 (Platform: x86_64-w64-mingw32/x64 (64-bit)).
-Below is code that I have tried to run for two Y variables. There also the error message (Error: subscript
-out of bounds). I also attach the test data below after the R code.
+I have R version 2.15.2 (Platform: x86_64-w64-mingw32/x64 (64-bit)). Below is code 
+that I have tried to run for two Y variables. There also the error message (Error: 
+subscript out of bounds). I also attach the test data below after the R code.
 
 
 Best regards,

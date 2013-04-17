@@ -1202,7 +1202,7 @@ C unconditional mean imputation for variables in y
       return
       end
 C***********************************************************************
-        function rangen(init)
+        real function rangen(init)
         integer a,p,ix,b15,b16,xhi,xalo,leftflo,fhi,k,init
         data a/16807/,b15/32768/,b16/65536/,p/2147483647/
         save ix

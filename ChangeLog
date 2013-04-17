@@ -1,3 +1,12 @@
+Version 0.7
+
+2013-04-16	Fix error in the bivariate example, i.e., pred <- cbind() than c()
+		Notified by Prof Brian Ripley and revealed via Makevars/PKG_FFLAGS=-fbounds-check
+2013-01-10	Suggests mitools and lme4
+                Add comparison with lmer in ecme.Rd
+		Add code for combining multiple imputation results
+2013-01-07	Revise bivariate examples in pan.Rd
+
 Version 0.6
 
 2013-01-07	Add bivariate example from Maria Valaste <maria.valaste@helsinki.fi> 
@@ -6,9 +15,9 @@ Version 0.6
 
 Version 0.5
 
-2012-8-6	Correct minor typos according to Speidel Matthias <Matthias.Speidel@iab.de>
+2012-08-06	Correct minor typos according to Speidel Matthias <Matthias.Speidel@iab.de>
 		Add CITATION
-2012-4-6	Add marijuana data from pannex
+2012-04-06	Add marijuana data from pannex
 		Remove inst/tests and remove dontrun{} in ecme.Rd and pan.Rd
 		To enable LazyData and LazyLoad
 

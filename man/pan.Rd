@@ -243,7 +243,7 @@ zcol <- 1
 prior <- list(a=1,Binv=1,c=1,Dinv=1)
 ########################################################################
 # Now we are ready to run pan(). Let's assume that the pan function
-# and the object code have already been loaded into Splus. First we
+# and the object code have already been loaded into R. First we
 # do a preliminary run of 1000 iterations. 
 #
 result <- pan(y,subj,pred,xcol,zcol,prior,seed=13579,iter=1000)
@@ -266,7 +266,7 @@ for(i in 1:6) acf(result$beta[i,1,])
 # impute the missing data m=10 times taking 100 steps between
 # imputations. We'll use the current simulated value of y as the first
 # imputation, then restart the chain where we left off to produce
-# the second thru the tenth.
+# the second through the tenth.
 #
 y1 <- result$y
 result <- pan(y,subj,pred,xcol,zcol,prior,seed=9565,iter=100,start=result$last)
@@ -287,8 +287,35 @@ result <- pan(y,subj,pred,xcol,zcol,prior,seed=2372,iter=100,start=result$last)
 y9 <- result$y
 result <- pan(y,subj,pred,xcol,zcol,prior,seed=7081,iter=100,start=result$last)
 y10 <- result$y
-detach(marijuana)
 ########################################################################
+# Now we combine the imputation results according to mitools
+########################################################################
+# First, we build data frames from above,
+d1 <- data.frame(y1,subj,pred)
+d2 <- data.frame(y2,subj,pred)
+d3 <- data.frame(y3,subj,pred)
+d4 <- data.frame(y4,subj,pred)
+d5 <- data.frame(y5,subj,pred)
+d6 <- data.frame(y6,subj,pred)
+d7 <- data.frame(y7,subj,pred)
+d8 <- data.frame(y8,subj,pred)
+d9 <- data.frame(y9,subj,pred)
+d10 <- data.frame(y10,subj,pred)
+# Second, we establish a S3 object as needed for the function MIcombine
+# nevertheless we start with an ordinary least squares regression
+require(mitools)
+d <- imputationList(list(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10))
+w <- with(d,lm(y~-1+pred))
+MIcombine(w)
+# Now, we can turn to lmer as in lme4 package but in this case it is the
+# same.
+require(lme4)
+w2 <- with(d,lmer(y~-1+pred+(1|subj)))
+b <- MIextract(w2,fun=fixef)
+Var <- function(obj) unlist(lapply(diag(vcov(obj)),function(m) m))
+v <- MIextract(w2,fun=Var)
+MIcombine(b,v)
+detach(marijuana)
 
 ### bivariate example
 
@@ -297,15 +324,15 @@ attach(bitest)
 y <- with(bitest,cbind(y1,y2))
 
 subj <- c(clusterid)
-pred <- c (int, x1, x2, x3)
+pred <- cbind (int, x1, x2, x3)
 xcol <- 1:4
 zcol <- 1
 a <- 2
-b <- 2
+c <- 2
 id2 <- matrix(c(1,0,0,1),ncol=2,nrow=2)
-Binv <- 4*id2
-Dinv <- 4*id2
-prior <- list(a=a, Binv=Binv, c=a, Dinv=Dinv)
+Binv <- a*id2
+Dinv <- c*id2
+prior <- list(a=a, Binv=Binv, c=c, Dinv=Dinv)
 result <- pan(y, subj, pred, xcol, zcol, prior, seed=12345, iter=1000)
 }
 
