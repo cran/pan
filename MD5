@@ -1,5 +1,5 @@
-ec5dfb033fb45404f1d3c67984f42b44 *ChangeLog
-580af512cc862ed2e2440ba38d38b92e *DESCRIPTION
+860cbbd529892d6da52486e24b62d6d0 *ChangeLog
+cbfc3be6672ff6b4b943581d8e2c1e8b *DESCRIPTION
 c19ca07d4c1e7fb9b35e877447420076 *INDEX
 bf230087942b366995f519c83c144530 *LICENSE
 809512848c2962af1dbe632279583f42 *NAMESPACE
@@ -11,11 +11,12 @@ da79076ed4e61dac99eb2b9fc52b725a *data/datalist
 9a719d587a74dea8ed396bf448be5556 *inst/CITATION
 8987ba5524bfd44fbcb74a7aaf0055a4 *inst/doc/pan-tr.R
 3d0e69d572e99c9e424392d6a15b219b *inst/doc/pan-tr.Rnw
-e51b08c0f43acfb3846e6136cab9b30d *inst/doc/pan-tr.pdf
-5f392f48da2c4711ecd84d0e2c417a1f *inst/doc/tr9704.pdf
+26c5d28bb9f66014a993d9d98f8c267c *inst/doc/pan-tr.pdf
 c13fbd46c1788a87fd74f6ddb0461085 *man/bitest.Rd
-b1d3ff0be37ae02b46edb8361eae8e7f *man/ecme.Rd
+66ea32225e89932de9ca21e43af479ff *man/ecme.Rd
 42ef38ca4115da743ad3c032b91be324 *man/marijuana.Rd
-6e2bc093953535e9901bd679e3c2a6b8 *man/pan.Rd
+dff0208c0782230e3b3485dacb0deaba *man/pan.Rd
 6cc846b91c04cb94d419ea89aea673ed *man/pan.bd.Rd
 ed2dacf64a3f7a73e169be42bbd6270e *src/pan.f
+3d0e69d572e99c9e424392d6a15b219b *vignettes/pan-tr.Rnw
+84ee41ec1fb9e2a18aebf3870c8a290d *vignettes/tr9704.pdf
