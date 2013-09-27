@@ -309,14 +309,14 @@ w <- with(d,lm(y~-1+pred))
 MIcombine(w)
 # Now, we can turn to lmer as in lme4 package but in this case it is the
 # same.
-require(lme4)
+if(require(lme4)) {
 w2 <- with(d,lmer(y~-1+pred+(1|subj)))
 b <- MIextract(w2,fun=fixef)
 Var <- function(obj) unlist(lapply(diag(vcov(obj)),function(m) m))
 v <- MIextract(w2,fun=Var)
 MIcombine(b,v)
 detach(marijuana)
-
+}
 ### bivariate example
 
 data(bitest)

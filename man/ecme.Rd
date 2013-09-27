@@ -242,12 +242,12 @@ result <- ecme(y,subj,occ,pred,xcol,zcol)
 result
 
 # Now we compare to lmer
-require(lme4)
+if(require(lme4)) {
 result <- lmer(y~-1+pred+(1|subj))
 result
 vcov(result)
 detach(complete)
-
+}
 ########################################################################
 }
 
