@@ -194,12 +194,15 @@ estimate of the covariance matrix associated with bi.
 }}
 
 \references{
-Schafer, J.L. (1997) Imputation of missing covariates under
+Schafer JL (1997) Imputation of missing covariates under
 a multivariate linear mixed model. Technical report 97-04, Dept. of
 Statistics, The Pennsylvania State University, 
-\url{http://www.stat.psu.edu/reports/1997/tr9704.pdf}.
 
-Schafer J L, Yucel RM (2002). Computational strategies for 
+Schafer JL (2001). Multiple imputation with PAN. Chapter 12, pp357-77.
+of New Methods for the Analysis of Change. Edited by Collins LM,
+Sayer AG. American Psychological Association, Washington DC.
+
+Schafer JL, Yucel RM (2002). Computational strategies for 
 multivariate linear mixed-effects models with missing values. 
 Journal of Computational and Graphical Statistics. 11:437-457
 }

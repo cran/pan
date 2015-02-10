@@ -1218,10 +1218,10 @@ C***********************************************************************
         return
         end
 C***********************************************************************
-        subroutine rngs(seed)
+        real function rngs(seed)
 C initializes rangen with seed
         integer seed
-        tmp=rangen(seed)
+        rngs=rangen(seed)
         return
         end
 C***********************************************************************

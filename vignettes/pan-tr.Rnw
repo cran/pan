@@ -4,7 +4,6 @@
 
 \documentclass[12pt]{article}
 \usepackage{Sweave,hyperref,pdfpages}
-\usepackage{url}
 \usepackage{a4wide}
 \usepackage{amsmath,epsfig}
 \usepackage{graphicx}
@@ -26,12 +25,13 @@
 \thispagestyle{empty}
 \section{Maintainer's note}
 The reference should read\footnote{Note that the technical report was originally obtained from 
-\url{http://www.stat.psu.edu/reports/1997/tr9704.pdf}}
+\textit{http://www.stat.psu.edu/reports/1997/tr9704.pdf} which is now briefly described at
+\textit{http://stat.psu.edu/research-old/technical-reports/archived-technical-reports}}..
 
 \vskip 0.25cm
 
 Schafer, J.L. (1997) Imputation of missing covariates under a multivariate linear mixed model. Technical report 97-04, 
-Dept. of Statistics, The Pennsylvania State University, \url{http://stat.psu.edu/Research/archived-technical-reports}.
+Dept. of Statistics, The Pennsylvania State University..
 
 \vskip 0.25cm
 
