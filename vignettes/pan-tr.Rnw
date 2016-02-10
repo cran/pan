@@ -24,8 +24,8 @@
 
 \thispagestyle{empty}
 \section{Maintainer's note}
-The reference should read\footnote{Note that the technical report was originally obtained from 
-\textit{http://www.stat.psu.edu/reports/1997/tr9704.pdf} which is now briefly described at
+The reference should read\footnote{Note that the technical report is now available from 
+\textit{http://sites.stat.psu.edu/reports/1997/tr9704.pdf} and briefly described at
 \textit{http://stat.psu.edu/research-old/technical-reports/archived-technical-reports}}..
 
 \vskip 0.25cm

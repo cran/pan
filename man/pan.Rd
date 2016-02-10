@@ -294,16 +294,16 @@ y10 <- result$y
 # Now we combine the imputation results according to mitools
 ########################################################################
 # First, we build data frames from above,
-d1 <- data.frame(y1,subj,pred)
-d2 <- data.frame(y2,subj,pred)
-d3 <- data.frame(y3,subj,pred)
-d4 <- data.frame(y4,subj,pred)
-d5 <- data.frame(y5,subj,pred)
-d6 <- data.frame(y6,subj,pred)
-d7 <- data.frame(y7,subj,pred)
-d8 <- data.frame(y8,subj,pred)
-d9 <- data.frame(y9,subj,pred)
-d10 <- data.frame(y10,subj,pred)
+d1 <- data.frame(y=y1,subj,pred)
+d2 <- data.frame(y=y2,subj,pred)
+d3 <- data.frame(y=y3,subj,pred)
+d4 <- data.frame(y=y4,subj,pred)
+d5 <- data.frame(y=y5,subj,pred)
+d6 <- data.frame(y=y6,subj,pred)
+d7 <- data.frame(y=y7,subj,pred)
+d8 <- data.frame(y=y8,subj,pred)
+d9 <- data.frame(y=y9,subj,pred)
+d10 <- data.frame(y=y10,subj,pred)
 # Second, we establish a S3 object as needed for the function MIcombine
 # nevertheless we start with an ordinary least squares regression
 require(mitools)

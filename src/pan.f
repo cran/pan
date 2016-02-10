@@ -1204,8 +1204,8 @@ C unconditional mean imputation for variables in y
 C***********************************************************************
         real function rangen(init)
         integer a,p,ix,b15,b16,xhi,xalo,leftflo,fhi,k,init
-        data a/16807/,b15/32768/,b16/65536/,p/2147483647/
         save ix
+        data a/16807/,b15/32768/,b16/65536/,p/2147483647/
         if(init.ne.0) ix=init
         xhi=ix/b16
         xalo=(ix-xhi*b16)*a
