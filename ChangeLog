@@ -1,3 +1,13 @@
+Version 1.6
+
+2018-06-29	Add reference to DESCRIPTION/Description:
+
+Version 1.5
+
+2018-06-24	Change email address
+2018-02-04	Remove a4wide.sty
+2018-01-25	Employ tools::package_native_routine_registration_skeleton("pan")
+
 Version 1.4
 
 2016-02-10	Minor change to pan example as suggested by 이찬영 <srh0926@gmail.com>
