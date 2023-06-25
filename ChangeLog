@@ -1,3 +1,16 @@
+Version 1.8
+
+2023-06-25	Replace 13 dfloat with dble in pan.f as suggested by Prof Brian Ripley from CRAN
+		Revise CITATION according to check --as-cran
+
+Version 1.7
+
+2022-12-03	Refine pan.bd.Rd
+2020-11-09	Refine vignette
+		nhyp=nhyp,hyp=hyp specification for pan()
+		Apply -fc-prototypes-external for C prototypes
+                Add marijuana to INDEX
+
 Version 1.6
 
 2018-06-29	Add reference to DESCRIPTION/Description:
