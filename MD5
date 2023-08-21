@@ -1,5 +1,5 @@
-3f4a101fb64e4fd5cc55c9dc7235f6f0 *ChangeLog
-c4b511b92fbccd9142a397723adaaa1d *DESCRIPTION
+92a05b2e14209151c5c1f21f773a0ce8 *ChangeLog
+51a887994bbfd1ec6f3c33d83510753a *DESCRIPTION
 22ea73aa12cb5ef7c30a1adef93ea65b *INDEX
 809512848c2962af1dbe632279583f42 *NAMESPACE
 d62e30c24814a6cce2f2c033fca18d0d *R/pan.R
@@ -11,7 +11,7 @@ a0869f3ed7e54b8645a3d08a9aa0f5fd *data/datalist
 9cbef69b0b2b05020b1bf47926ae452f *data/marijuana.rda
 fa8c641ba68533036c5efcbf24190958 *inst/CITATION
 dae6d685ba2531aae1a0ebc4da387d2c *inst/doc/pan-tr.Rnw
-c0fb2c860c9911d9e7cefbc49984a0fd *inst/doc/pan-tr.pdf
+afdd5564c373c4facedb0b776d17b017 *inst/doc/pan-tr.pdf
 5936c3d24764f54679e892f430274118 *man/YWC.data.Rd
 c13fbd46c1788a87fd74f6ddb0461085 *man/bitest.Rd
 fcc4295a727c7e1843ddb86e5d86192e *man/ecme.Rd
@@ -19,7 +19,7 @@ fcc4295a727c7e1843ddb86e5d86192e *man/ecme.Rd
 65b1328e238cb86869d9120001d2c56f *man/pan.Rd
 4bff0b1bc1acabcb7831565429685415 *man/pan.bd.Rd
 913e699af90e0371a8b39e1a9ae88de9 *src/package_native_routine_registration_skeleton.c
-d0914f3b50117ae5f0e2ea7eacaabf1c *src/pan.f
+12d1d6d8505ca27281ed9ec59c556b90 *src/pan.f
 dae6d685ba2531aae1a0ebc4da387d2c *vignettes/pan-tr.Rnw
 24ac4b1a209ca562a4a047c0b4d6acaa *vignettes/schafer01.pdf
 fa664ef2ed9ab78399d63220626fe706 *vignettes/schafer02.pdf
